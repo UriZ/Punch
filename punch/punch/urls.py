@@ -25,6 +25,8 @@ urlpatterns = patterns('',
     url(r'^boo/(?P<punch_id>\d+)/$','punchapp.views.make_boo'),
 
     url(r'^users/(?P<user_id>\d+)/collections$', 'punchapp.views.CollectionsByUserJSON'),
+    url(r'^repunch/(?P<punch_id>\d+)/(?P<collection_id>\d+)$', 'punchapp.views.repunch'),
+    
     
     url(r'^follow/(?P<user_id>\d+)/(?P<follow_id>\d+)/$','punchapp.views.follow'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),

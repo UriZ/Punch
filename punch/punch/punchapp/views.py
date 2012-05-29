@@ -91,3 +91,16 @@ def make_funny(request, punch_id):
         message['id'] = punch_id
     json = simplejson.dumps(message)
     return HttpResponse(json, mimetype='application/json')
+
+def repunch(request, punch_id, collection_id):
+    punch = Punch.objects.get(id=punch_id)
+    pc = Punchcollection.objects.get(id=collection_id)
+    new_punch = Punch(
+        href=punch.href,
+        title=punch.title,
+        funny_count=0,
+        boo_count=0,
+        punchcollection=pc
+    )
+    new_punch.save()
+    return HttpResponse('')
