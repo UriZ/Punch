@@ -1,0 +1,36 @@
+
+<!--show all the punches of a specific punch collection -->
+<html>
+<body style="margin: 0px">
+<div id="fb-root"></div>
+
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="detailPage">
+<h1 class="collectionTitle">{{ collection.title }} <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+
+	</h1>
+	{% include "punch/displayPunches.html" with punchList=collection.punch_set.all %}
+</div>
+</body>
+</html>
+
+
+<style type="text/css">
+
+.collectionTitle
+{
+	text-align: center;	
+}
+.detailPage
+{
+	background:	#CFD5DE url("http://localhost:8000/static/bgGray.jpg") top left repeat-x		
+}
+
+</style>

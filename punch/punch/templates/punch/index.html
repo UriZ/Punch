@@ -1,0 +1,25 @@
+{% if collection_list %}
+   
+    
+    
+    <div class="collectionsContainer">
+    	
+    	{% for collection in collection_list %}
+        <div class="punchCollection"><a href="/collections/{{ collection.id }}/">{{ collection.title }}</a></div>
+    {% endfor %}
+    	
+    </div>
+    
+{% else %}
+    <p>No punch collections are available.</p>
+{% endif %}
+
+<style type="text/css">
+.collectionsContainer
+{
+	width: 200px;
+	height: 100%;
+}
+.punchCollection
+{}
+</style>

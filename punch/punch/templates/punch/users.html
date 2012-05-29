@@ -1,0 +1,27 @@
+{% if users_list %}
+   
+    
+    
+    <div class="collectionsContainer">
+    	
+    	{% for user in users_list %}
+        <div class="punchCollection"><a href="/users/{{ user.id }}/">{{ user.name }}</a> </div>
+    {% endfor %}
+    	
+    </div>
+    
+{% else %}
+    <p>No punch collections are available.</p>
+{% endif %}
+
+<style type="text/css">
+.collectionsContainer
+{
+	width: 100%;
+	height: 100%;
+	/*	background-image: url("http://static.jquery.com/files/rocker/images/bg-interior-tile-drk.jpg");
+*/
+}
+.punchCollection
+{}
+</style>
