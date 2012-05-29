@@ -27,12 +27,13 @@ src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
     	
     	</a>
     	<div class="buttonsPanel" >
-    		<a href="#"  class="funnyButton" id="funnyButton">funny</a>	<a href="#" class="booButton" id="booButton" >boo</a>
+    		<a href="#"  class="funnyButton" id="funnyButton">funny</a>	<a href="#" class="booButton" id="booButton" >boo</a> <a href="#" class="rePunchButton" id="rePunchButton" >repunch</a>
     	</div>
     	<p>
     		
     		<span class="funnyCount" id="funny{{punch.id}}"> funny:{{punch.funny_count}}	</span>
     		<span class="booCount"> boo:{{punch.boo_count}}	</span>
+
     	</p>	
     </div>
 {% endfor %}
@@ -82,6 +83,41 @@ $(document).ready(function()
 });
 
 
+
+function openRepunchDialogue(id)
+{ 
+	
+	$.get("/repunch/"+id+"/"+1, function(data) {
+			
+		alert(id)
+
+		});
+	toggleRePunchDialogue(id)
+}
+
+
+
+
+
+function toggleRePunchDialogue(id)
+{/*
+	el = document.getElementById("overlay");
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+	el = document.getElementById("overlayWrapper");
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+	if (el.style.visibility == "visible")
+	{
+			var punch = $(document.getElementById(id))
+			var src = punch.find("img").attr("imageSource")
+			zoomPunch(1,src)
+
+	}*/
+}
+
+
+
+
+
 /**
  * open a punch when clicking on the image 
  */
@@ -99,6 +135,8 @@ function togglePunch(id)
 
 	}
 }
+
+
 
 
 /**
@@ -188,7 +226,16 @@ $(document).ready(function()
 
 
 
+$(document).ready(function() 
+{
 
+	$(".rePunchButton").bind('click', function () {
+		t = $(this).parent().parent()
+		id = t.attr("id");
+			alert(id)
+		openRepunchDialogue(id);
+	});
+});
 
 
 /**
@@ -269,7 +316,7 @@ $(document).ready(function()
 
 
 
-.funnyButton,.booButton {
+.funnyButton,.booButton,.rePunchButton{
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
