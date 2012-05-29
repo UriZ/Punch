@@ -5,6 +5,8 @@ from django.http import  HttpResponse
 from models import Punchcollection,Punch,User
 from django.http import Http404
 from django.shortcuts import render_to_response
+from django.utils import simplejson
+from django.shortcuts import  get_object_or_404
 import tweepy
 
 def users(request):
@@ -26,6 +28,12 @@ def CollectionsByUser(request,user_id):
         'collection_list': collection_list,
     })
     return HttpResponse(t.render(c))
+
+def CollectionsByUserJSON(request,user_id):
+    user = User.objects.get(pk=user_id)
+    collection_list =  user.punchcollection_set.all()
+    cl = [{'id': c.id, 'title': c.title} for c in collection_list]
+    return HttpResponse(simplejson.dumps(cl))
 
 def getAllPunches(request):
     allPunches = Punch.objects.all()
@@ -52,9 +60,6 @@ def detail(request, collection_id):
     except Punchcollection.DoesNotExist:
         raise Http404
     return render_to_response('punch/detail.html', {'collection': collection})
-
-from django.utils import simplejson
-from django.shortcuts import  get_object_or_404
 
 def follow(request, user_id, follow_id):
     currentUser = User.objects.get(pk=user_id)
