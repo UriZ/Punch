@@ -1,3 +1,4 @@
+{% load static %}
 <!-- display punches given a list of punches-->
 <script type="text/javascript"
 src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
@@ -193,6 +194,8 @@ src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
 	
 </script>
 
+
+<img src="{% get_media_prefix %}img/cat.png">
 
 <div id="punchCollection" class="punchCollection">
 {% for punch in punchList %}

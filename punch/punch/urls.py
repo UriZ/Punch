@@ -26,5 +26,6 @@ urlpatterns = patterns('',
     
     url(r'^follow/(?P<user_id>\d+)/(?P<follow_id>\d+)/$','punchapp.views.follow'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
 
